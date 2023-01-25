@@ -49,6 +49,8 @@ def scrape_page(root):
             maps[str(row_number)]["Title"] = row_tds[1].text_content()
             maps[str(row_number)]["Author"] = row_tds[2].text_content()
             maps[str(row_number)]["Size"] = row_tds[3].text_content()
+            maps[str(row_number)]["Width (in)"] = ""
+            maps[str(row_number)]["Height (in)"] = ""
             maps[str(row_number)]["Scale"] = ""
             maps[str(row_number)]["Description"] = ""
             maps[str(row_number)]["Provenance"] = ""
@@ -63,15 +65,37 @@ def scrape_page(root):
             elif "Scale" in text:
                 maps[str(row_number)]["Scale"] = text
             elif "\"x" in text:
-                maps[str(row_number)]["Size"] += text
+                maps[str(row_number)]["Size"] += " " + text
             else:
                 maps[str(row_number)]["Description"] += text + " "
 
-    # string parsing for size columns
+
+    # string parsing for additional size columns (width, height)
     for row_dict in maps.values():
+        row_dict["Size"] = row_dict["Size"].replace(":", ": ")
+        row_dict["Size"] = row_dict["Size"].replace("\" x", "\"x")
+        row_dict["Size"] = row_dict["Size"].replace("\"x ", "\"x")
+
+        #edge case - if no x in dimensions, so adding an x in when relevant
+        strs_to_replace = []
+        for integer in range(0, 10):
+            string = "\"" + str(integer)
+            replacement = "\"x" + str(integer)
+            strs_to_replace.append((string,replacement))
         
+        for string, replacement in strs_to_replace:
+            row_dict["Size"] = row_dict["Size"].replace(string, replacement)
 
+        # separate all words in key "Size"
+        for word in row_dict["Size"].split():
 
+            #look at first string that contains "x 
+            if ("\"x" or "\" x " or "\" x") in word:
+                dimensions = word.replace("\"", "").replace("x", " ").replace(",", "").split()
+                print(dimensions)
+                row_dict["Width (in)"] = float(dimensions[0])
+                row_dict["Height (in)"] = float(dimensions[1])
+                break
 
     return maps
 
