@@ -28,9 +28,8 @@ def scrape_page(root):
     maps = {}
     row_number = 0
 
-    # all trs are under this. #slicing after row 18 because the first 18 rows are header text for the page
+    # all trs are under this. #slicing all trs after row 18 because the first 18 rows are header text for the webpage
     all_rows = root.cssselect('body table')[0][18:]
-    
 
     for i, row in enumerate(all_rows):
         #unpack all tds in row
@@ -62,6 +61,7 @@ def scrape_page(root):
 
             if "Gift" in text:
                 maps[str(row_number)]["Provenance"] = text
+            #TODO: solve the problem when scale is in the full description tr so then there is no description text
             elif "Scale" in text:
                 maps[str(row_number)]["Scale"] = text
             elif "\"x" in text:
