@@ -1,6 +1,6 @@
 # Scraper for Chicago Maps Archive
 
-The purpose of this scraper is to reconfigure data made publicly available by the Chicago History Museum on [City of Chicago Maps](http://chsmedia.org/media/fa/fa/LIB/CityChicagoMapsAccessible.htm). This reconfigured data will be used to help process and digitize the maps for public use.
+The purpose of this scraper is to reconfigure data made publicly available by the Chicago History Museum on [City of Chicago Maps](http://chsmedia.org/media/fa/fa/LIB/CityChicagoMapsAccessible.htm). This reconfigured data will be used to help process and digitize the maps for public use by [University of Chicago Library's Preservation Department](https://www.lib.uchicago.edu/about/directory/departments/pres/).
 
 In order to streamline the use of this scraper, I used the python package [poetry](https://python-poetry.org/docs/) to create a virtual environment. This approach allows users to work more flexibility across machines, not needing to worry about installing all the appropriate packages needed to run this program.
 
