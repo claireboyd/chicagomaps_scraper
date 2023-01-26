@@ -120,6 +120,8 @@ def parse_dimensions(row_dict):
 
 def get_restructured_data():
     """
+    This function  
+
     """
     maps_dict = page_to_dict("http://chsmedia.org/media/fa/fa/LIB/CityChicagoMapsAccessible_files/sheet001.htm")
 
