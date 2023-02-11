@@ -10,7 +10,7 @@ In order to streamline the use of this scraper, I used the python package [poetr
 
 * *parse_dimensions()*: This function takes a row_dict object created by page_to_dict() and parses the dimension values (width and height) that are saved within the scale key/value pair.
 
-* *get restructured_data()*: This function takes no inputs, calls the two functions above using the [City of Chicago Maps](http://chsmedia.org/media/fa/fa/LIB/CityChicagoMapsAccessible.htm) URL. The core use of this function is to convert the maps dictionary into a dataframe, and then export the dataframe as an xlsx file. This is output is saved as "city_of_chicago_maps.xlsx" within the restructured_data folder.
+* *get_restructured_data()*: This function takes no inputs, calls the two functions above using the [City of Chicago Maps](http://chsmedia.org/media/fa/fa/LIB/CityChicagoMapsAccessible.htm) URL. The core use of this function is to convert the maps dictionary into a dataframe, and then export the dataframe as an xlsx file. This is output is saved as "city_of_chicago_maps.xlsx" within the restructured_data folder.
 
 ### A note on the structure of the webpage:
 
